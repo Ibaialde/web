@@ -76,7 +76,7 @@
 		</div>
 	
 		<div class="song">
-			<input type="image" src="Grey_button.png" onclick="playAudio(&quot;song&quot;)"></button>
+			<input type="image" src="Grey_button.png" onclick="playSong()"></button>
 		</div>
 		
 		<br> <br>
@@ -104,6 +104,13 @@
 	<script>
 		const key = "K1114611146443322111135111358987654";
 		var actualKey = "K"
+	
+		function playSsong() {
+			var x = document.getElementById("song");
+			
+			x.load();
+			x.play(); 
+		}
 	
 		function playAudio(name) {
 			var x = document.getElementById(name);
