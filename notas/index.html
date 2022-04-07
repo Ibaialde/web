@@ -1,0 +1,167 @@
+<html>
+	<head>
+		<title>Melod&iacute;a</title>
+		<link rel="icon" href="Ibaialde.ico">
+		
+		<style>
+			h1 {
+				text-align: center;
+				font-family: "Brush Script MT";
+				font-size: 85;
+			}
+			
+			div.song, div.notes {
+				margin: auto;
+				width: 85%;
+				padding: 0% 1% 1% 1%;
+				text-align: center;
+			}
+			
+			input {
+				border: none;
+				color: white;
+				display: inline-block;
+				cursor: pointer;
+			}
+			
+			.song input {
+				width: 12%;
+				margin: 0% 1.5% 0% 1.5%;
+			}
+			
+			.notes input {
+				width: 10%;
+				margin: 0.35% 3%;
+			}
+		</style>
+	</head>
+	
+	<audio id="song">
+		<source src="audio/La_cucaracha.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="C1">
+		<source src="audio/C1.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="D1">
+		<source src="audio/D1.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="E">
+		<source src="audio/E.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="F">
+		<source src="audio/F.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="G">
+		<source src="audio/G.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="A">
+		<source src="audio/A.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="Bb">
+		<source src="audio/Bb.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="C2">
+		<source src="audio/C2.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="D2">
+		<source src="audio/D2.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="E2">
+		<source src="audio/E2.mp3" type="audio/mpeg">
+	</audio>
+	
+	<body>
+		<div>
+			<h1 id="text">Prueba mel&oacute;dica</h1>
+		</div>
+	
+		<div class="song">
+			<input type="image" src="Grey_button.png" onclick="playAudio(&quot;song&quot;)"></button>
+		</div>
+		
+		<br> <br>
+		
+		<div class="notes">
+			<input type="image" src="Blue_button.png" onclick="playAudio(&quot;G&quot;)"></button>
+			<input type="image" src="Green_button.png" onclick="playAudio(&quot;D2&quot;)"></button>
+			<input type="image" src="White_button.png"  onclick="playAudio(&quot;C1&quot;)"></button>
+			<input type="image" src="Yellow_button.png"  onclick="playAudio(&quot;E&quot;)"></button>
+			<input type="image" src="Red_button.png"  onclick="playAudio(&quot;F&quot;)"></button>
+		</div>
+		
+		<br> <br>
+		
+		<div class="notes">
+			<input type="image" src="Orange_button.png"  onclick="playAudio(&quot;E2&quot;)"></button>
+			<input type="image" src="Pink_button.png"  onclick="playAudio(&quot;C2&quot;)"></button>
+			<input type="image" src="Cyan_button.png"  onclick="playAudio(&quot;A&quot;)"></button>
+			<input type="image" src="Purple_button.png"  onclick="playAudio(&quot;Bb&quot;)"></button>
+			<input type="image" src="Black_button.png"  onclick="playAudio(&quot;D1&quot;)"></button>
+		</div>
+		
+	</body>
+	
+	<script>
+		const key = "K1114611146443322111135111358987654";
+		var actualKey = "K"
+	
+		function playAudio(name) {
+			var x = document.getElementById(name);
+			
+			checkNote(getNumber(name));
+			
+			x.load();
+			x.play(); 
+		}
+		
+		function getNumber(name) {
+			switch (name) {
+				case 'C1':
+					return 1;
+					break;
+				case 'D1':
+					return 2;
+					break;
+				case 'E':
+					return 3;
+					break;
+				case 'F':
+					return 4;
+					break;
+				case 'G':
+					return 5;
+					break;
+				case 'A':
+					return 6;
+					break;
+				case 'Bb':
+					return 7;
+					break;
+				case 'C2':
+					return 8;
+					break;
+				case 'D2':
+					return 9;
+					break;
+				case 'E2':
+					return 0;
+					break;
+			}
+		}
+		
+		function checkNote(num) {
+			actualKey = actualKey.concat(num.toString());
+			console.log(actualKey);
+			if (key.startsWith(actualKey)) {
+				if (key.localeCompare(actualKey) == 0) {
+					item = document.getElementById("text");
+					item.innerHTML = "&iexcl;Buen trabajo!";
+					item.style.color = "green";
+				}
+			} else {
+				actualKey = "K";
+			}
+		}
+	</script>
+	
+</html>
